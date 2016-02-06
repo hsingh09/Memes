@@ -1,0 +1,7 @@
+<nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+	<ul class="nav navbar-nav">
+	<li {{#ifCond 'home' '==' currentPage}} class="active"{{/ifCond}}><a href="/">Home</a></li>
+	<li {{#ifCond 'messages' '==' currentPage}} class="active"{{/ifCond}}><a href="/messages">Messages</a></li>
+	<li {{#ifCond 'new' '==' currentPage}} class="active"{{/ifCond}}> <a href="/new">Add a Message</a></li>
+	</ul>
+</nav>
