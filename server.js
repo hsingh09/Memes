@@ -46,11 +46,12 @@ app.set('view engine', 'hbs');
 
 // Logging middleware
 router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
+    console.log(req.baseUrl);
+    next();
 });
 
 
+app.use('*', router);
 app.use('/', routes);
 app.use('/messages', messages);
 app.use('/new', create);
