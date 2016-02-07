@@ -14,6 +14,14 @@
       <p>
         Here's a list of all our messages
       </p>
+      <div class="posts">
+        {{#each posts}}
+           <div class="post">
+            {{title}}
+            {{message}}
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
   </body>
