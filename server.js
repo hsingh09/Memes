@@ -45,8 +45,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // Logging middleware
-router.use(function (req,res,next) {
-    console.log(req.baseUrl);
+app.use("*", function (req,res,next) {
+    console.log(req.method + " " + req.baseUrl);
     next();
 });
 
