@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('data/MemeData');
+var db = new sqlite3.Database('data/MemeData.db');
 
 /* GET images page */
 router.get('/', function(req, res, next) {
