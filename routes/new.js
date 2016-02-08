@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post("/", function(req, res)
 {
-    var db = new sqlite3.Database('data/MemeData');
+    var db = new sqlite3.Database('data/MemeData.db');
     
     console.log("New Submission");
     console.log(req.body);

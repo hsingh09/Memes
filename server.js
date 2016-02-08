@@ -13,7 +13,7 @@ var success = require("./routes/success");
 
 // Databse
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('data/MemeData');
+var db = new sqlite3.Database('data/MemeData.db');
 
 // Body-Parser
 var bodyParser = require('body-parser');
