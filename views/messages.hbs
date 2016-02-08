@@ -2,6 +2,7 @@
   <head>
     <title>{{title}}</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="messages.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
@@ -11,18 +12,19 @@
     </div>
     <br/>
     <div class="jumbotron">
-      <p>
-        Here's a list of all our messages
-      </p>
-      <div class="posts">
-        {{#each posts}}
-           <div class="post">
-            {{title}}
-            {{message}}
-          </div>
-        {{/each}}
-      </div>
+      <h1>Messages</h1>
     </div>
+    <div class="container posts">
+      {{#gridHelper 3 posts}}
+         <div class="row">
+          {{#each this}}
+          <div class="col-md-3 meme">
+            <h2>{{title}}</h2>
+            <h3>{{message}}</h3>
+          </div>
+          {{/each}}
+        </div>
+      {{/gridHelper}}
   </div>
   </body>
 </html>

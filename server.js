@@ -21,6 +21,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+// Register the public directory
+app.use(express.static(__dirname + '/public/js'));
+app.use(express.static(__dirname + '/public/css'));
+
+
 db.serialize(function() {
     db.run("CREATE TABLE IF NOT EXISTS memes (title TEXT, message TEXT)");
 
@@ -62,6 +67,26 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
             return options.inverse(this);
     }
 });
+
+
+hbs.registerHelper('gridHelper', function(itemsPerRow, context, options) {
+    var out = "";
+    var subcontext = []
+
+    for (var i = 0;  i < context.length; i++)
+    {
+        if ((i > 0) && (i % itemsPerRow == 0))
+        {
+            out += options.fn(subcontext);
+            subcontext = []
+        }
+        subcontext.push(context[i]);
+    }
+    out += options.fn(subcontext);
+    return out;
+
+});
+
 
 // Configure HandleBars
 app.set('views', path.join(__dirname, 'views'));

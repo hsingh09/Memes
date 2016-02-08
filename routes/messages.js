@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
     var messages = [];
 
     db.each('SELECT rowid AS id, title, message FROM memes', function(err, row) {
-      console.log(row.title + ': ' + row.message);
       messages.push({title: row.title, message: row.message});
   });
     res.render('messages', { title: 'All Messages', currentPage: "messages", posts: messages});
