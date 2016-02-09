@@ -40,6 +40,8 @@ db.serialize(function() {
   stmt.finalize();
 });
 
+db.close();
+
 
 // Handlebars 
 hbs.registerPartials(__dirname + '/views/partials');
