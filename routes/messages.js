@@ -11,8 +11,9 @@ router.get('/', function(req, res, next) {
     db.each('SELECT rowid AS id, title, message FROM memes', function(err, row) {
       messages.push({title: row.title, message: row.message});
   });
-    res.render('messages', { title: 'All Messages', currentPage: "messages", posts: messages});
     db.close();
+
+    res.render('messages', { title: 'All Messages', currentPage: "messages", posts: messages});
 });
 
 
