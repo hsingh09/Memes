@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var sqlite3 = require('sqlite3').verbose();
+var database = require('../models/data');
 
 
 /* GET images page */
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post("/", function(req, res)
 {
-    var db = new sqlite3.Database('data/MemeData.db');
+    var db = database.GetDB();
     
     console.log("New Submission");
     console.log(req.body);
@@ -18,8 +18,6 @@ router.post("/", function(req, res)
     var stmt = db.prepare('INSERT INTO  memes VALUES (?, ?)');
     stmt.run(req.body.title, req.body.message);
     stmt.finalize();
-    db.close();
-
     res.redirect("/success");
 });
     

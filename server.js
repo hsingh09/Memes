@@ -12,8 +12,10 @@ var create = require("./routes/new");
 var success = require("./routes/success");
 
 // Databse
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('data/MemeData.db');
+//var sqlite3 = require('sqlite3').verbose();
+//var db = new sqlite3.Database('data/MemeData.db');
+var database = require("./models/data");
+database.EnsureDB();
 
 // Body-Parser
 var bodyParser = require('body-parser');
@@ -25,22 +27,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public/js'));
 app.use(express.static(__dirname + '/public/css'));
 
-
-db.serialize(function() {
+// Create the database if it doesn't exist
+/*db.serialize(function() {
     db.run("CREATE TABLE IF NOT EXISTS memes (title TEXT, message TEXT)");
+    db.close();
+});*/
 
-    var stmt = db.prepare('INSERT INTO  memes VALUES (?, ?)');
-    var data = [{title: "hello", message: "world"}, {title: "goodby", message: "planet"}];
-
-    //for (i in data)
-    //{
-    //    stmt.run(data[i].title, data[i].message);
-    //}
-
-  stmt.finalize();
-});
-
-db.close();
 
 
 // Handlebars 
