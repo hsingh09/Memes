@@ -4,19 +4,22 @@ var database = require('../models/data');
 
 /* GET images page */
 router.get('/', function(req, res, next) {
+//    database.EnsureDB();
     var db = database.GetDB();
     var messages = [];
 
     db.each('SELECT rowid AS id, title, message FROM memes', function(err, row) {
         if (err)
         {
-            console.log("meww");
+            console.log("Error!");
             console.log(err);
         }
         messages.push({title: row.title, message: row.message});
+    }, function() 
+    {
+        res.render('messages', { title: 'All Messages', currentPage: "messages", posts: messages});
+//        database.CloseDB();
     });
-
-    res.render('messages', { title: 'All Messages', currentPage: "messages", posts: messages});
 });
 
 

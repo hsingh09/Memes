@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post("/", function(req, res)
 {
+//    database.EnsureDB();
     var db = database.GetDB();
     
     console.log("New Submission");
@@ -18,6 +19,7 @@ router.post("/", function(req, res)
     var stmt = db.prepare('INSERT INTO  memes VALUES (?, ?)');
     stmt.run(req.body.title, req.body.message);
     stmt.finalize();
+//    database.CloseDB();
     res.redirect("/success");
 });
     
