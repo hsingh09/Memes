@@ -5,9 +5,12 @@
     "start": "node Server.js"
   },
   "dependencies": {
+    "async": "^1.5.2",
+    "azure-storage": "latest",
     "body-parser": "^1.14.2",
     "express": "latest",
     "hbs": "~3.1.0",
+    "multer": "^1.1.0",
     "sqlite3": "latest"
   }
 }

@@ -16,14 +16,15 @@
     </div>
     <div class="container posts">
       {{#gridHelper 3 posts}}
-         <div class="row">
+      <div class="row">
           {{#each this}}
-          <div class="col-md-3 meme">
+          <div class="col-md-3 col-md-offset-1 meme">
             <h2>{{title}}</h2>
+            <img src="{{imagesrc}}" />
             <h3>{{message}}</h3>
           </div>
           {{/each}}
-        </div>
+          </div>
       {{/gridHelper}}
   </div>
   </body>

@@ -5,6 +5,7 @@ var db = null;
 exports.EnsureDB = function()
 {
     console.log("EnsureDB called");
+
     // If the database doesn't exist create it
     if (!db)
     {
@@ -21,7 +22,7 @@ exports.EnsureDB = function()
 
     // Create our table if it doesn't exist
    db.serialize(function() {
-    db.run("CREATE TABLE IF NOT EXISTS memes (title TEXT, message TEXT)");
+    db.run("CREATE TABLE IF NOT EXISTS memes (title TEXT, message TEXT, container TEXT, blobName TEXT, imageURL TEXT)");
    });
 }
 
