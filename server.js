@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // Register the public directory
 app.use(express.static(__dirname + '/public/js'));
 app.use(express.static(__dirname + '/public/css'));
+app.use(express.static(__dirname + '/public/images'));
 
 
 // Initialize the blob service
